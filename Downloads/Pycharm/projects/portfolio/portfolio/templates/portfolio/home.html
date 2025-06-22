@@ -1,0 +1,84 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+  <h1 id="blog">Blog</h1>
+
+  {% for post in blog %}
+    <div class="blog-entry">
+      <h2>{{ post.title }}</h2>
+      <p><strong>{{ post.date }}</strong></p>
+      <p>{{ post.description|linebreaks }}</p>
+
+      {% if post.link %}
+        <a href="{{ post.link }}" target="_blank" class="blog-link">Read More</a>
+      {% endif %}
+
+      {% if post.images.all %}
+        <div class="blog-images">
+          {% for image in post.images.all %}
+            <img src="{{ image.image.url }}" alt="Blog Image">
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No blog posts found.</p>
+  {% endfor %}
+
+  <style>
+    #blog {
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .blog-entry {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+      font-family: var(--main-font);
+    }
+
+    .blog-entry h2 {
+      margin-top: 0;
+      font-size: 1.6em;
+    }
+
+    .blog-entry p {
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+
+    .blog-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0077b5;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .blog-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .blog-images img {
+      height: 150px;
+      width: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid #ccc;
+    }
+  </style>
+{% endblock %}

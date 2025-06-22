@@ -1,0 +1,75 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Education{% endblock %}
+
+{% block content %}
+
+<div class="education-container">
+  {% if education %}
+    {% for edu in education %}
+      <div class="education-card">
+        <h2>{{ edu.school_name }}</h2>
+        <p><strong>{{ edu.start_date }}{% if edu.end_date %} – {{ edu.end_date }}{% else %} – Present{% endif %}</strong></p>
+        <p><strong>Degree:</strong> {{ edu.degree }}</p>
+        <p>{{ edu.description|safe }}</p>
+
+        {% if edu.link %}
+          <a href="{{ edu.link }}" target="_blank" class="education-link">Visit School Website</a>
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>No education entries found.</p>
+    {% endfor %}
+  {% else %}
+    <p>No education information available.</p>
+  {% endif %}
+</div>
+
+<style>
+  .education-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: var(--main-font);
+  }
+
+  .education-card {
+    padding: 20px 30px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .education-card h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+  }
+
+  .education-card p {
+    font-size: 1.05em;
+    line-height: 1.5;
+  }
+
+  .education-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0077b5;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+    border-radius: 6px;
+    padding: 10px 20px;
+    background-color: #0077b5;
+    color: white;
+  }
+
+  .education-link:hover {
+    background-color: #005f87;
+    color: white;
+  }
+</style>
+
+{% endblock %}
