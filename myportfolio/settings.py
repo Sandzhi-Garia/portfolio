@@ -2,12 +2,13 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+import os
 
-SECRET_KEY = 'django-insecure-(+s=3#ik@-0+8e(+l74597sxw#(az1k!@dmnd_5ag+u_yt*&u!'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-(+s=3#ik@-0+8e(+l74597sxw#(az1k!@dmnd_5ag+u_yt*&u!')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['sandzhigaria.co', 'myportfolio.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -21,6 +22,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -47,6 +49,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'myportfolio.wsgi.application'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Database (по умолчанию SQLite)
 DATABASES = {
