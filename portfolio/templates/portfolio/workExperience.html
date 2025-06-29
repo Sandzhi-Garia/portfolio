@@ -1,0 +1,62 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Work Experience{% endblock %}
+
+{% block content %}
+<div class="experience-container">
+  {% for work in work %}
+    <div class="experience-card">
+      <h2>{{ work.title }}</h2>
+      <p><strong>Company:</strong> {{ work.company_name }}</p>
+      <p><strong>{{ work.start_date }}{% if work.end_date %} – {{ work.end_date }}{% else %} – Present{% endif %}</strong></p>
+      <p>{{ work.description|linebreaks }}</p>
+      {% if work.link %}
+        <a href="{{ work.link }}" target="_blank" class="experience-link">View More</a>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No work experience entries found.</p>
+  {% endfor %}
+</div>
+
+<style>
+  .experience-container {
+    max-width:900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .experience-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+  }
+
+  .experience-card h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+
+  .experience-card p {
+    line-height: 1.5;
+    font-size: 1.05em;
+  }
+
+  .experience-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #0077b5;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .experience-link:hover {
+    color: #005582;
+  }
+</style>
+{% endblock %}

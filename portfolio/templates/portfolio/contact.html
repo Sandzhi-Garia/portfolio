@@ -1,0 +1,135 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+{% if success %}
+  <p class="success-message">Message Sent Successfully. Thank you!</p>
+{% endif %}
+
+<form method="post" class="contact-form">
+  {% csrf_token %}
+  <div class="form-row">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+  </div>
+  <div class="message-row">
+    <textarea name="message" placeholder="Your Message..." rows="6" required></textarea>
+  </div>
+  <button type="submit">Send Message</button>
+</form>
+
+<style>
+  :root {
+    --button-color: #3498db;
+    --button-hover: #2980b9;
+  }
+
+  #contact {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .success-message {
+    color: #c2ffc2;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .contact-form {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .form-row input {
+    flex: 1;
+    min-width: 280px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    padding: 10px 24px;       /* reduced vertical padding for smaller height */
+    font-size: 1.1em;
+    line-height: 1.6;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+    height: 40px;             /* fixed smaller height */
+    box-sizing: border-box;
+  }
+
+  .message-row {
+    max-width: 900px;         /* same width as form max-width */
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .message-row textarea {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    padding: 20px 24px;
+    font-size: 1.1em;
+    line-height: 1.6;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+    min-height: 140px;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #0077b5;
+    box-shadow: 0 0 15px rgba(0,119,181,0.4);
+  }
+
+  button {
+    align-self: center;
+    padding: 14px 36px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background: #353535;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    font-family: inherit;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+  }
+
+  button:hover {
+    background: #606060;
+    border-color: #aaa;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column;
+    }
+
+    .form-row input,
+    .message-row textarea {
+      width: 100%;
+    }
+  }
+</style>
+{% endblock %}

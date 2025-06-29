@@ -1,0 +1,301 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+{% if about %}
+<div class="about-intro"> {{ about.about_me|linebreaks }}</div>
+
+
+    <div class="about-container">
+        {% if about.profile_image %}
+            <img src="{{ about.profile_image.url }}" alt="Profile Image" class="profile-img">
+        {% endif %}
+        <div class="about-text">
+            <h2>{{ about.name }}</h2>
+            <p>{{ about.bio|linebreaks }}</p>
+
+
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/sandzhigaria/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Sandzhi-Garia" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://leetcode.com/u/Sandzhi-Garia/" target="_blank" title="LeetCode">
+                    <i class="fas fa-code"></i> <!-- LeetCode не входит в FontAwesome, используем замену -->
+                </a>
+                <a href="https://t.me/garya_arbuser" target="_blank" title="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://instagram.com/garya_arbuser" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/sandzhi.garia/" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+
+            {% if about.resume_file %}
+                <a href="{{ about.resume_file.url }}" download class="download-btn">
+                    <i class="fas fa-download"></i> Download My Resume (PDF)
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+<div class="skills-container">
+    <h3 class="skills-title">Main Skills</h3>
+    <div class="skills-list">
+        <span class="skill-pill">MultiSIM</span>
+        <span class="skill-pill">AutoCad</span>
+        <span class="skill-pill">Fusion 360</span>
+        <span class="skill-pill">Altera Quartus II (VHDL)</span>
+        <span class="skill-pill">Arduino/Raspberry Pi</span>
+        <span class="skill-pill">KiCad</span>
+        <span class="skill-pill">PCB Design</span>
+        <span class="skill-pill">Python/Django</span>
+        <span class="skill-pill">Embedded Systems</span>
+        <span class="skill-pill">HTML/CSS</span>
+        <span class="skill-pill">MATLAB</span>
+        <span class="skill-pill">Circuit Analysis/Design</span>
+        <span class="skill-pill">C</span>
+        <span class="skill-pill">Github</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">PyCharm</span>
+        <span class="skill-pill">VS Code</span>
+        <span class="skill-pill">MS Office</span>
+        <span class="skill-pill">Soldering</span>
+        <span class="skill-pill">Software Testing</span>
+        <span class="skill-pill">WHMIS</span>
+        <span class="skill-pill">Engineering Ethics</span>
+        <span class="skill-pill">Oscilloscope</span>
+        <span class="skill-pill">Jira</span>
+        <span class="skill-pill">Postman</span>
+        <span class="skill-pill">Slack</span>
+        <span class="skill-pill">Trello</span>
+        <span class="skill-pill">Project Management</span>
+        <span class="skill-pill">Teamwork</span>
+    </div>
+</div>
+
+<div class="interests-container">
+    <h3 class="interests-title">My Interests & Hobbies</h3>
+    <div class="interests-grid">
+        <div class="interest-item">
+        <img src="/media/profile_images/flstudio.jpg" alt="FL Studio">
+        <p>
+            Music production in FL Studio 21. I post them on my
+            <a href="https://youtube.com/@kkenshi_prod?si=k8VdAKJg8yYZ3crs" target="_blank" rel="noopener noreferrer">youtube channel</a>.
+        </p>
+         </div>
+
+        <div class="interest-item">
+            <img src="/media/profile_images/manga.png" alt="Manga">
+            <p>Reading books and mangas. My favourites are horror, thriller, adventures.</p>
+        </div>
+
+        <div class="interest-item">
+            <img src="/media/profile_images/chess.png" alt="Chess">
+            <p>Recently I started playing chess again. My Rapid rating is 394. <a href="https://www.chess.com/member/garyochirov" target="_blank" rel="noopener noreferrer">Add me</a> and let's play!</p>
+        </div>
+
+        <div class="interest-item">
+            <img src="/media/profile_images/gym.jpg" alt="Gym">
+            <p>Hitting the gym 3 times a week to build my dream physique.</p>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+{% else %}
+    <p>No information available.</p>
+{% endif %}
+<style>
+    .about-container {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+        box-shadow: 0 0 12px rgba(0,0,0,0.05);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        margin-top: -15px;
+    }
+
+    .profile-img {
+         width: 160px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .about-text {
+        flex: 1;
+        max-width: 700px;
+    }
+
+    .about-text h2 {
+        margin-top: 0;
+        font-size: 1.6em;
+    }
+
+    .about-text p {
+        line-height: 1.6;
+        font-size: 1.1em;
+    }
+
+    #about {
+        font-size: 2em;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+    }
+
+    .social-icons a {
+        margin-right: 15px;
+        font-size: 1.8em;
+        color: #333;
+        transition: color 0.3s;
+        text-decoration: none;
+    }
+
+    .social-icons a:hover {
+        color: #8f8f8f;
+    }
+
+    .download-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #000000;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+    }
+
+    .download-btn:hover {
+        background-color: #8f8f8f;
+    }
+
+
+
+.skills-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 30px auto 0 auto;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+
+    display: flex;
+    flex-direction: column; /* вертикально: заголовок + список */
+    align-items: center;
+    gap: 20px;
+}
+
+.skills-title {
+    font-size: 1.6em;
+    color: #222;
+    margin: 0;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 20px;
+    justify-content: center;
+}
+
+
+.skill-pill {
+    padding: 10px 18px;
+    border: 1px solid #ccc;
+    color: #333;
+    background-color: #fff;
+    font-weight: 500;
+    border-radius: 30px;
+    font-size: 0.95em;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.skill-pill:hover {
+    background-color: #f5f5f5;
+    cursor: default;
+}
+
+.interests-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 30px auto 0 auto;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+
+    display: flex;
+    flex-direction: column; /* вертикально: заголовок + список */
+    align-items: flex-start; /* выравниваем по левому краю */
+    gap: 20px;
+}
+
+.interests-title {
+    font-size: 1.6em;
+    color: #222;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.interests-list {
+    list-style-type: disc; /* буллеты */
+    padding-left: 20px; /* отступ слева для буллетов */
+    color: #333;
+    font-size: 1.05em;
+    margin: 0;
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.interest-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.interest-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.interest-item p {
+    font-size: 1.05em;
+    color: #333;
+}
+
+
+</style>
+
+{% endblock %}

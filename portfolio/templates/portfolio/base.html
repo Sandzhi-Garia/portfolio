@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <style>
+        /* Global layout for sticky footer */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* ← adjust darkness */
+            z-index: -1;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            padding-top: 60px;
+            background-image: url("/media/profile_images/schema3.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            z-index: 0;
+        }
+
+        /* Navbar container */
+        .navbar {
+            background-color: rgba(18, 18, 34, 0.68);
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-sizing: border-box;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Navbar links */
+        .navbar a {
+            color: #f2f2f2;
+            text-decoration: none;
+            font-size: 17px;
+            padding: 12px 16px;
+            margin-left: 15px;
+            white-space: nowrap;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #8f8f8f;
+            color: white;
+            border-radius: 4px;
+        }
+
+        /* Main content area */
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(18, 18, 34, 0.68);
+            color: white;
+            font-size: 14px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a href="{% url 'home' %}">Blog/Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'workExperience' %}">Work Experience</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'education' %}">Education</a>
+        <a href="{% url 'contact' %}">Contact Me</a>
+    </div>
+
+    <!-- Page content -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Sandzhi-Garia Ochirov. All rights reserved.
+    </footer>
+</body>
+</html>
