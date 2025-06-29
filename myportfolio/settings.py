@@ -87,6 +87,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sandzhi.garia@gmail.com'
-EMAIL_HOST_PASSWORD = 'vchvlcpipqijoqtu'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
 CONTACT_EMAIL = 'sandzhi.garia@gmail.com'
