@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-(+s=3#ik@-0+8e(+l7459
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['sandzhigaria.co', 'myportfolio.onrender.com']
+ALLOWED_HOSTS = ['sandzhigaria.co', 'portfolio-m92h.onrender.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
