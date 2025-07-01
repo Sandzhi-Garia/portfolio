@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+
 from .models import Projects, AboutMe, Blog, WorkExperience, Education
 from .forms import ContactForm
-from django.core.mail import send_mail
-from django.shortcuts import render, redirect
-from .forms import ContactForm
-from django.conf import settings
 
 def contact_view(request):
     if request.method == 'POST':
@@ -24,9 +23,8 @@ def contact_view(request):
     return render(request, 'portfolio/contact.html', {'form': form})
 
 
-
 def home(request):
-    blog = Blog.objects.all().order_by('-date')  # order by newest date first
+    blog = Blog.objects.all().order_by('-date')
     return render(request, 'portfolio/blog.html', {'blog': blog})
 
 
@@ -41,9 +39,10 @@ def projects(request):
 
 
 def workExperience(request):
-    work = WorkExperience.objects.all()
+    work = WorkExperience.objects.all().order_by('-start_date')
     return render(request, 'portfolio/workExperience.html', {'work': work})
 
+
 def education(request):
-    education = Education.objects.all()
+    education = Education.objects.all().order_by('-start_date')
     return render(request, 'portfolio/Education.html', {'education': education})
